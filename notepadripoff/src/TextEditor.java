@@ -29,6 +29,13 @@ public class TextEditor extends JFrame implements ActionListener {
     JMenuItem openItem;
     JMenuItem exitItem;
 
+    JMenu backgroundMenu;
+    JMenuItem Yellowbg;
+    JMenuItem Blackbg;
+    JMenuItem Whitebg;
+    JMenuItem purplebg;
+    JMenuItem cyanbg;
+
     TextEditor() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Custom notepad by WP45");
@@ -75,6 +82,7 @@ public class TextEditor extends JFrame implements ActionListener {
 
         menuBar = new JMenuBar();
         fileMenu = new JMenu("File");
+
         openItem = new JMenuItem("Open");
         saveItem = new JMenuItem("Save");
         exitItem = new JMenuItem("Exit");
@@ -86,8 +94,38 @@ public class TextEditor extends JFrame implements ActionListener {
         fileMenu.add(openItem);
         fileMenu.add(saveItem);
         fileMenu.add(exitItem);
+
         menuBar.add(fileMenu);
 
+        // ------ apperance menubar ------
+        backgroundMenu = new JMenu("Background");
+
+        Yellowbg = new JMenuItem("Yellow");
+
+        Blackbg = new JMenuItem("Black");
+
+        Whitebg = new JMenuItem("White");
+
+        purplebg = new JMenuItem("Purple");
+
+        cyanbg = new JMenuItem("Cyan");
+
+        Yellowbg.addActionListener(this);
+
+        Blackbg.addActionListener(this);
+
+        Whitebg.addActionListener(this);
+
+        purplebg.addActionListener(this);
+
+        cyanbg.addActionListener(this);
+
+        backgroundMenu.add(Yellowbg);
+        backgroundMenu.add(Blackbg);
+        backgroundMenu.add(Whitebg);
+        backgroundMenu.add(purplebg);
+        backgroundMenu.add(cyanbg);
+        menuBar.add(backgroundMenu);
         // ------ /menubar ------
         this.setJMenuBar(menuBar);
         this.add(fontLabel);
@@ -163,6 +201,26 @@ public class TextEditor extends JFrame implements ActionListener {
         if (e.getSource() == exitItem) {
             System.exit(0);
 
+        }
+        if (e.getSource() == Yellowbg) {
+            this.getContentPane().setBackground(Color.YELLOW);
+            textArea.setBackground(Color.YELLOW);
+        }
+        if (e.getSource() == Blackbg) {
+            this.getContentPane().setBackground(Color.BLACK);
+            textArea.setBackground(Color.BLACK);
+        }
+        if (e.getSource() == Whitebg) {
+            this.getContentPane().setBackground(Color.WHITE);
+            textArea.setBackground(Color.WHITE);
+        }
+        if (e.getSource() == purplebg) {
+            this.getContentPane().setBackground(new Color(128, 0, 128));
+            textArea.setBackground(new Color(128, 0, 128));
+        }
+        if (e.getSource() == cyanbg) {
+            this.getContentPane().setBackground(new Color(0, 255, 255));
+            textArea.setBackground(new Color(0, 255, 255));
         }
     }
 
